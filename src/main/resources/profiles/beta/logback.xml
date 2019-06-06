@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_PATH" value="/opt/smartApi" />
+	<!-- 生成配置 -->
+	<appender name="common"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/logs/common.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/logs/common.%d{yyyy-MM-dd}.log.zip
+			</fileNamePattern>
+			<MaxHistory>30</MaxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} - %msg%n</pattern>
+		</layout>
+	</appender>
+	<!-- 控制台输出配置 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{80} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="common" />
+	</root>
+</configuration> 
